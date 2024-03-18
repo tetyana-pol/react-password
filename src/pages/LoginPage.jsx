@@ -60,6 +60,7 @@ export const LoginPage = () => {
 
     return () => {
       emailInputRef.current.removeEventListener("focus", onFocusEmail);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       emailInputRef.current.removeEventListener("blur", onBlurEmail);
     };
   }, []);
