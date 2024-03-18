@@ -1,0 +1,219 @@
+@font-face {
+  font-family: "Basis Grotesque Pro";
+
+  src: url("./fonts/BasisGrotesquePro-Regular.woff2") format("woff2");
+}
+
+@import "style/mixins";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: Basis Grotesque Pro;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 39px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  max-width: 1512px;
+  width: 100%;
+  margin-top: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  font-size: 32px;
+  color: #316fea;
+  font-weight: bold;
+}
+
+.title {
+  margin-top: 80px;
+}
+
+.login {
+  margin-top: 40px;
+  width: 400px;
+
+  &-third {
+    display: flex;
+    gap: 16px;
+
+    &-sso {
+      display: flex;
+      align-items: center;
+      width: 192px;
+      height: 48px;
+      padding: 0 20px;
+      border: 1px solid #d3d8dc;
+      border-radius: 6px;
+      gap: 10px;
+      background-color: white;
+
+      &-text {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: 0px;
+        text-align: left;
+        padding-block: 14px;
+      }
+
+      &:hover,
+      :focus {
+        border: 1px solid black;
+        cursor: pointer;
+      }
+    }
+  }
+  &-divider {
+    margin-top: 30px;
+
+    color: #bec5cc;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1;
+    position: relative;
+
+    hr {
+      border-width: 0;
+      height: 0;
+      border-top: 1px solid #e3e6e9;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      margin: 0;
+      z-index: -1;
+    }
+
+    span {
+      padding-inline: 4px;
+      background-color: white;
+    }
+  }
+
+  &-input-email {
+    margin-top: 30px;
+    @include styleInput;
+  }
+
+  &-input-password {
+    display: block;
+    margin-top: 30px;
+    @include styleInput;
+  }
+
+  &-input-forgot {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: right;
+    color: #316fea;
+    border: 0;
+  }
+
+  &-button {
+    margin-top: 30px;
+    @include styleButton;
+  }
+
+  &-signup {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+
+    &-button {
+      color: #316fea;
+      border: 0;
+    }
+  }
+}
+
+.forgot {
+  margin-top: 40px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-input {
+    margin-top: 40px;
+    @include styleInput;
+  }
+
+  &-send {
+    margin-top: 25px;
+    @include styleButton;
+  }
+
+  &-cancel {
+    width: 100%;
+    height: 48px;
+    margin-top: 20px;
+    color: #060e1e;
+    border: 1px solid #d3d8dc;
+  }
+}
+
+.create {
+  margin-top: 80px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-text {
+    text-align: center;
+  }
+
+  &-password {
+    margin-top: 40px;
+
+    border-radius: 8px;
+
+    &-label {
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 21px;
+      color: #060e1e;
+      text-align: left;
+    }
+
+    &-input {
+      margin-top: 8px;
+      @include styleInput;
+    }
+  }
+
+  &-confirm {
+    margin-top: 25px;
+
+    border-radius: 8px;
+  }
+
+  &-button {
+    margin-top: 30px;
+    @include styleButton;
+  }
+}
+
+.warning {
+  color: red;
+  font-size: 12px;
+  text-align: left;
+}
