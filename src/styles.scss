@@ -108,7 +108,26 @@ body {
   }
 
   &-input-password {
+    padding-left: 40px;
+  }
+
+  &-input-box {
     margin-top: 30px;
+    position: relative;
+  }
+
+  &-input-visibility {
+    position: absolute;
+    width: 40px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    border: 0;
+    background-color: transparent;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &-input-wrapper {
@@ -203,14 +222,35 @@ body {
     }
 
     &-input {
-      margin-top: 8px;
+    }
+  }
+
+  &-box {
+    margin-top: 30px;
+    position: relative;
+  }
+
+  &-visibility {
+    position: absolute;
+    width: 40px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    border: 0;
+    background-color: transparent;
+
+    &:hover {
+      cursor: pointer;
     }
   }
 
   &-confirm {
-    margin-top: 25px;
-
     border-radius: 8px;
+  }
+
+  &-box-confirm {
+    margin-top: 25px;
+    position: relative;
   }
 
   &-button {

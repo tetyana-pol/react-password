@@ -30,29 +30,47 @@ export const CreatePasswordPage = () => {
           <label htmlFor="password">
             <div className="create-password-label">Password</div>
           </label>
-          <input
-            className="create-password-input style-input"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="create-box">
+            <input
+              className="create-password-input style-input"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="button"
+              className="create-visibility"
+              onClick={(e) => e.preventDefault}
+            >
+              <img src="/icons/hide.svg" alt="logo" />
+            </button>
+          </div>
         </div>
         <div className="create-confirm ">
           <label htmlFor="confirm">
             <div className="create-password-label">Confirm Password</div>
           </label>
-          <input
-            className="create-password-input style-input"
-            type="password"
-            name="confirm"
-            id="confirm"
-            placeholder="Password"
-            value={passwordConfirm}
-            onChange={(e) => setPasswordConfirm(e.target.value)}
-          />
+          <div className="create-box-confirm">
+            <input
+              className="create-password-input style-input"
+              type="password"
+              name="confirm"
+              id="confirm"
+              placeholder="Password"
+              value={passwordConfirm}
+              onChange={(e) => setPasswordConfirm(e.target.value)}
+            />
+            <button
+              type="button"
+              className="create-visibility"
+              onClick={(e) => e.preventDefault}
+            >
+              <img src="/icons/hide.svg" alt="logo" />
+            </button>
+          </div>
         </div>
         <button className="create-button style-button">Reset password</button>
       </form>

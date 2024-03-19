@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { authService } from "../services/authService";
-import { useNavigate } from "react-router-dom";
 
 export const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
 
-  const navigate = useNavigate();
-
-  const { forgot } = authService;
+  const { forgotPassword } = authService;
 
   const handleSubmit = (e) => {
-    e.peventDefault();
-    forgot({ email })
-      .then(() => navigate("create-password"))
-      .catch(() => console.log("request is failed"));
+    e.preventDefault();
+    forgotPassword({ email })
+      .then((res) => {
+        window.alert(res.detail);
+        setEmail("");
+      })
+      .catch(() => window.alert("request is failed"));
   };
 
   return (

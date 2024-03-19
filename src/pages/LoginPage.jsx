@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { authService } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 
@@ -39,30 +39,11 @@ export const LoginPage = () => {
   });
   const [isEmail, setIsEmail] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
   const navigate = useNavigate();
 
   const { login } = authService;
-
-  const emailInputRef = useRef(null);
-
-  useEffect(() => {
-    const onFocusEmail = () => {
-      setIsEmailFocused(true);
-    };
-
-    const onBlurEmail = () => {
-      setIsEmailFocused(false);
-    };
-
-    emailInputRef.current.addEventListener("focus", onFocusEmail);
-    emailInputRef.current.addEventListener("blur", onBlurEmail);
-
-    return () => {
-      emailInputRef.current.removeEventListener("focus", onFocusEmail);
-      emailInputRef.current.removeEventListener("blur", onBlurEmail);
-    };
-  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -118,7 +99,6 @@ export const LoginPage = () => {
         </div>
         <form onSubmit={(e) => handleSubmit(e)}>
           <input
-            ref={emailInputRef}
             className="login-input-email style-input"
             name="email"
             type="email"
@@ -127,9 +107,15 @@ export const LoginPage = () => {
             onChange={(e) => {
               handleInputChange(e);
               setIsEmail(!Boolean(validateEmail(e.target.value)));
+            }}
+            onFocus={() => {
+              setIsEmailFocused(true);
+            }}
+            onBlur={() => {
+              setIsEmailFocused(false);
               setError((prev) => ({
                 ...prev,
-                email: validateEmail(e.target.value),
+                email: validateEmail(formData.email),
               }));
             }}
           />
@@ -138,21 +124,39 @@ export const LoginPage = () => {
           )}
           {isEmail && (
             <div>
-              <input
-                className="login-input-password style-input"
-                name="password"
-                type="password"
-                placeholder="password"
-                value={formData.password}
-                onChange={(e) => {
-                  handleInputChange(e);
-                  setError((prev) => ({
-                    ...prev,
-                    email: validatePassword(e.target.value),
-                  }));
-                }}
-              />
-              {error.password && <p className="warning">{error.password}</p>}
+              <div className="login-input-box">
+                <input
+                  className="login-input-password style-input"
+                  name="password"
+                  type="password"
+                  placeholder="password"
+                  value={formData.password}
+                  onChange={(e) => {
+                    handleInputChange(e);
+                  }}
+                  onFocus={() => {
+                    setIsPasswordFocused(true);
+                  }}
+                  onBlur={() => {
+                    setIsPasswordFocused(false);
+                    setError((prev) => ({
+                      ...prev,
+                      email: validateEmail(formData.password),
+                    }));
+                  }}
+                />
+                <button
+                  type="button"
+                  className="login-input-visibility"
+                  onClick={(e) => e.preventDefault}
+                >
+                  <img src="/icons/hide.svg" alt="logo" />
+                </button>
+              </div>
+
+              {error.password && isPasswordFocused && (
+                <p className="warning">{error.password}</p>
+              )}
 
               <div className="login-input-wrapper">
                 <button
