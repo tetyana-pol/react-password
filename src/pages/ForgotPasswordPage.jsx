@@ -25,12 +25,12 @@ export const ForgotPasswordPage = () => {
         }}
       >
         <input
-          className="forgot-input"
+          className="forgot-input style-input"
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button type="submit" className="forgot-send">
+        <button type="submit" className="forgot-send style-button">
           Send
         </button>
         <button type="reset" className="forgot-cancel">

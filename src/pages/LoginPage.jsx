@@ -60,7 +60,6 @@ export const LoginPage = () => {
 
     return () => {
       emailInputRef.current.removeEventListener("focus", onFocusEmail);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       emailInputRef.current.removeEventListener("blur", onBlurEmail);
     };
   }, []);
@@ -120,7 +119,7 @@ export const LoginPage = () => {
         <form onSubmit={(e) => handleSubmit(e)}>
           <input
             ref={emailInputRef}
-            className="login-input-email"
+            className="login-input-email style-input"
             name="email"
             type="email"
             placeholder="work email"
@@ -140,7 +139,7 @@ export const LoginPage = () => {
           {isEmail && (
             <div>
               <input
-                className="login-input-password"
+                className="login-input-password style-input"
                 name="password"
                 type="password"
                 placeholder="password"
@@ -155,7 +154,7 @@ export const LoginPage = () => {
               />
               {error.password && <p className="warning">{error.password}</p>}
 
-              <div>
+              <div className="login-input-wrapper">
                 <button
                   className="login-input-forgot"
                   type="button"
@@ -167,7 +166,7 @@ export const LoginPage = () => {
             </div>
           )}
 
-          <button className="login-button" type="submit">
+          <button className="login-button style-button" type="submit">
             Log in Qencode
           </button>
         </form>

@@ -31,7 +31,7 @@ export const CreatePasswordPage = () => {
             <div className="create-password-label">Password</div>
           </label>
           <input
-            className="create-password-input"
+            className="create-password-input style-input"
             type="password"
             name="password"
             id="password"
@@ -40,12 +40,12 @@ export const CreatePasswordPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div className="create-confirm">
+        <div className="create-confirm ">
           <label htmlFor="confirm">
             <div className="create-password-label">Confirm Password</div>
           </label>
           <input
-            className="create-password-input"
+            className="create-password-input style-input"
             type="password"
             name="confirm"
             id="confirm"
@@ -54,7 +54,7 @@ export const CreatePasswordPage = () => {
             onChange={(e) => setPasswordConfirm(e.target.value)}
           />
         </div>
-        <button className="create-button">Reset password</button>
+        <button className="create-button style-button">Reset password</button>
       </form>
     </div>
   );
