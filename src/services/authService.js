@@ -12,7 +12,7 @@ function login({ email, password }) {
 }
 
 function newPassword({ password, token, secret }) {
-  return authClient.post("/password-set", {
+  return authClient.post("/v1/auth/password-set", {
     token,
     secret,
     password,

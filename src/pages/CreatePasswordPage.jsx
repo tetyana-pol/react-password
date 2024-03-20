@@ -18,7 +18,7 @@ export const CreatePasswordPage = () => {
     if (password === passwordConfirm) {
       newPassword({ password, token, secret })
         .then(() => console.log("password is changed"))
-        .catch(() => console.log("request is failed"));
+        .catch((err) => console.log("Error"));
     }
   };
 

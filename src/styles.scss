@@ -194,6 +194,8 @@ body {
     margin-top: 20px;
     color: #060e1e;
     border: 1px solid #d3d8dc;
+    border-radius: 8px;
+    background-color: transparent;
   }
 }
 
@@ -220,13 +222,10 @@ body {
       color: #060e1e;
       text-align: left;
     }
-
-    &-input {
-    }
   }
 
   &-box {
-    margin-top: 30px;
+    margin-top: 8px;
     position: relative;
   }
 
@@ -245,11 +244,12 @@ body {
   }
 
   &-confirm {
+    margin-top: 25px;
     border-radius: 8px;
   }
 
   &-box-confirm {
-    margin-top: 25px;
+    margin-top: 8px;
     position: relative;
   }
 
