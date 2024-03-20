@@ -141,7 +141,7 @@ export const LoginPage = () => {
                     setIsPasswordFocused(false);
                     setError((prev) => ({
                       ...prev,
-                      email: validateEmail(formData.password),
+                      email: validatePassword(formData.password),
                     }));
                   }}
                 />
