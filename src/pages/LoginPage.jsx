@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { authService } from "../services/authService";
 import { useNavigate } from "react-router-dom";
+import { Overlays } from "../components/Overlays";
+import { useSetAtom } from "jotai";
+import { uiAtom } from "../state";
 
 function validateEmail(value) {
   if (!value) {
@@ -41,6 +44,8 @@ export const LoginPage = () => {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
+  const setUi = useSetAtom(uiAtom);
+
   const navigate = useNavigate();
 
   const { login } = authService;
@@ -68,15 +73,24 @@ export const LoginPage = () => {
           );
         })
         .then(() => setFormData({ email: "", password: "" }))
-        .then(() => console.log("you are logged"))
-        .catch(() => console.log("you are failed"));
+        .then(() =>
+          setUi((prev) => ({
+            ...prev,
+            modal: true,
+            message: "you are logged",
+          }))
+        )
+        .catch(() =>
+          setUi((prev) => ({ ...prev, modal: true, message: "You are failed" }))
+        );
     } else {
-      window.alert("Data is invalid");
+      setUi((prev) => ({ ...prev, modal: true, message: "Data invalid" }));
     }
   };
 
   return (
     <>
+      <Overlays />
       <div className="title">Log in to your account</div>
       <div className="login">
         <div className="login-third">

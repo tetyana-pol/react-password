@@ -8,6 +8,7 @@
     "bulma": "^0.9.3",
     "classnames": "^2.3.1",
     "formik": "^2.2.9",
+    "jotai": "^2.7.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
