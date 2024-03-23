@@ -21,11 +21,11 @@ export const ForgotPasswordPage = () => {
         .then(() => {
           setEmail("");
         })
-        .catch(() =>
+        .catch((err) =>
           setUi((prev) => ({
             ...prev,
             modal: true,
-            message: "Request is failed",
+            message: `Request is failed, detail: ${err.response.data.detail} `,
           }))
         );
     } else {

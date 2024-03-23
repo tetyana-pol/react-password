@@ -41,25 +41,28 @@ export const LoginPage = () => {
     ) {
       login(formData)
         .then((res) => {
-          localStorage.setItem("access_token", res.access_token);
-          localStorage.setItem("token_expire", res.token_expire);
-          localStorage.setItem("refresh_token", res.refresh_token);
+          localStorage.setItem("access_token", res.data.access_token);
+          localStorage.setItem("token_expire", res.data.token_expire);
+          localStorage.setItem("refresh_token", res.data.refresh_token);
           localStorage.setItem(
             "refresh_token_expire",
-            res.refresh_token_expire
+            res.data.refresh_token_expire
           );
-        })
-        .then(() => setFormData({ email: "", password: "" }))
-        .then(() =>
+          setFormData({ email: "", password: "" });
           setUi((prev) => ({
             ...prev,
             modal: true,
-            message: "you are logged",
-          }))
-        )
-        .catch(() =>
-          setUi((prev) => ({ ...prev, modal: true, message: "You are failed" }))
-        );
+            message: "You are logged in",
+          }));
+        })
+
+        .catch((err) => {
+          setUi((prev) => ({
+            ...prev,
+            modal: true,
+            message: `You are failed, detail: ${err.response.data.detail}`,
+          }));
+        });
     } else {
       setUi((prev) => ({ ...prev, modal: true, message: "Data invalid" }));
     }

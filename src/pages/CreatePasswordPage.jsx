@@ -5,6 +5,7 @@ import { validationService } from "../services/validation";
 import { useSetAtom } from "jotai";
 import { uiAtom } from "../state";
 import { Overlays } from "../components/Overlays";
+import { errorService } from "../services/errorService";
 
 export const CreatePasswordPage = () => {
   const [password, setPassword] = useState("");
@@ -42,13 +43,15 @@ export const CreatePasswordPage = () => {
               message: "Password is changed",
             }))
         )
-        .catch(() =>
+        .catch((err) => {
           setUi((prev) => ({
             ...prev,
             modal: true,
-            message: "Error",
-          }))
-        );
+            message: `Error, detail: ${errorService(
+              err.response.data.detail
+            )} `,
+          }));
+        });
     } else {
       setUi((prev) => ({
         ...prev,
