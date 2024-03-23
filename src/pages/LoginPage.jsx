@@ -1,35 +1,10 @@
 import { useState } from "react";
 import { authService } from "../services/authService";
+import { validationService } from "../services/validation";
 import { useNavigate } from "react-router-dom";
 import { Overlays } from "../components/Overlays";
 import { useSetAtom } from "jotai";
 import { uiAtom } from "../state";
-
-function validateEmail(value) {
-  if (!value) {
-    return "Email is required";
-  }
-
-  const emailPattern = /^[\w.+-]+@([\w-]+\.){1,3}[\w-]{2,}$/;
-
-  if (!emailPattern.test(value)) {
-    return "Email is not valid";
-  }
-
-  return "";
-}
-
-function validatePassword(value) {
-  if (!value) {
-    return "Password is required";
-  }
-
-  if (value.length < 8) {
-    return "At least 8 characters";
-  }
-
-  return "";
-}
 
 export const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -49,6 +24,8 @@ export const LoginPage = () => {
   const navigate = useNavigate();
 
   const { login } = authService;
+
+  const { validateEmail, validatePassword } = validationService;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { authService } from "../services/authService";
+import { validationService } from "../services/validation";
 import { useSetAtom } from "jotai";
 import { uiAtom } from "../state";
 import { Overlays } from "../components/Overlays";
@@ -17,8 +18,19 @@ export const CreatePasswordPage = () => {
 
   const { newPassword } = authService;
 
+  const { validatePassword } = validationService;
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (validatePassword(password)) {
+      setUi((prev) => ({
+        ...prev,
+        modal: true,
+        message: "Password invalid",
+      }));
+      return;
+    }
 
     if (password === passwordConfirm) {
       newPassword({ password, token, secret })

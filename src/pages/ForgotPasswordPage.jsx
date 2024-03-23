@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { authService } from "../services/authService";
+import { validationService } from "../services/validation";
 import { useSetAtom } from "jotai";
 import { uiAtom } from "../state";
 import { Overlays } from "../components/Overlays";
@@ -11,19 +12,29 @@ export const ForgotPasswordPage = () => {
 
   const { forgotPassword } = authService;
 
+  const { validateEmail } = validationService;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    forgotPassword({ email })
-      .then((res) => {
-        setEmail("");
-      })
-      .catch(() =>
-        setUi((prev) => ({
-          ...prev,
-          modal: true,
-          message: "Request is failed",
-        }))
-      );
+    if (!validateEmail(email)) {
+      forgotPassword({ email })
+        .then(() => {
+          setEmail("");
+        })
+        .catch(() =>
+          setUi((prev) => ({
+            ...prev,
+            modal: true,
+            message: "Request is failed",
+          }))
+        );
+    } else {
+      setUi((prev) => ({
+        ...prev,
+        modal: true,
+        message: "Email invalid",
+      }));
+    }
   };
 
   return (
@@ -42,10 +53,17 @@ export const ForgotPasswordPage = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+
           <button type="submit" className="forgot-send style-button">
             Send
           </button>
-          <button type="reset" className="forgot-cancel">
+          <button
+            type="reset"
+            className="forgot-cancel"
+            onClick={() => {
+              setEmail("");
+            }}
+          >
             Cancel
           </button>
         </form>
