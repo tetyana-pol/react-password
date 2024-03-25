@@ -48,7 +48,7 @@ body {
   margin-top: 40px;
   width: 400px;
 
-  @include onTablet {
+  @include onMobile {
     width: 300px;
   }
 
@@ -187,7 +187,7 @@ body {
   flex-direction: column;
   align-items: center;
 
-  @include onTablet {
+  @include onMobile {
     width: 300px;
   }
 
@@ -222,7 +222,7 @@ body {
   flex-direction: column;
   align-items: center;
 
-  @include onTablet {
+  @include onMobile {
     width: 300px;
   }
 
