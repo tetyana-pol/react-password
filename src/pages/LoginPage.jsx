@@ -139,11 +139,7 @@ export const LoginPage = () => {
                     }));
                   }}
                 />
-                <button
-                  type="button"
-                  className="login-input-visibility"
-                  onClick={(e) => e.preventDefault}
-                >
+                <button type="button" className="login-input-visibility">
                   <img src="/icons/hide.svg" alt="logo" />
                 </button>
               </div>

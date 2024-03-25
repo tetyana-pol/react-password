@@ -207,6 +207,11 @@ body {
     border: 1px solid #d3d8dc;
     border-radius: 8px;
     background-color: transparent;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #d3d8dc;
+    }
   }
 }
 

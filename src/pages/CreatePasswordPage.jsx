@@ -56,7 +56,7 @@ export const CreatePasswordPage = () => {
       setUi((prev) => ({
         ...prev,
         modal: true,
-        message: "Passwords dont match",
+        message: "Passwords don't match",
       }));
     }
   };
@@ -81,11 +81,7 @@ export const CreatePasswordPage = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button
-                type="button"
-                className="create-visibility"
-                onClick={(e) => e.preventDefault}
-              >
+              <button type="button" className="create-visibility">
                 <img src="/icons/hide.svg" alt="logo" />
               </button>
             </div>
@@ -104,11 +100,7 @@ export const CreatePasswordPage = () => {
                 value={passwordConfirm}
                 onChange={(e) => setPasswordConfirm(e.target.value)}
               />
-              <button
-                type="button"
-                className="create-visibility"
-                onClick={(e) => e.preventDefault}
-              >
+              <button type="button" className="create-visibility">
                 <img src="/icons/hide.svg" alt="logo" />
               </button>
             </div>
